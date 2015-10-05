@@ -2,10 +2,11 @@
 var _  = require('underscore');
 
 
-
 /**
  * いち商品のコンストラクタ。
+ * @private
  * @constructor
+ * @see CommodityCollection#createItems
  */
 var Commodity = function (data) {
 
@@ -75,29 +76,23 @@ var Commodity = function (data) {
 	};
 
 
-	/**
-	 * 行データ用のインスタンスを保持する。
-	 * @type {RowForMakeleaps}
-	 * @see #_initialize
-	 */
-	this.row = null;
-
-
 	this._initialize();
 
 };
 
 
-(function (fn) {
+(function (fn) { // prototype shortcut
 
 	/**
 	 * 初期化処理。
+	 * @requires ._data
+	 * @see Commodity
 	 */
 	fn._initialize = function () {
 
 		// for Makeleaps
 		// 見出し行なら 'simple'
-		this.view_type = 'normal';
+		this.attributes.view_type = 'normal';
 
 		this.attributes.name = this._data.title;
 
@@ -138,6 +133,7 @@ var CommodityCollection = function (data) {
 	/**
 	 * @type {array} array of Commodity instance
 	 * @see #_initialize
+	 * @see Commodity
 	 */
 	this.items = null;
 
@@ -165,6 +161,7 @@ var CommodityCollection = function (data) {
 	 * @requires Commodity
 	 * @requires ._data
 	 * @return {array}
+	 * @see #_initialize
 	 */
 	fn.createItems = function () {
 

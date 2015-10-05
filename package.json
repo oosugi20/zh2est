@@ -1,0 +1,17 @@
+{
+  "name": "zenhubplus",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha tests/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.1"
+  }
+}

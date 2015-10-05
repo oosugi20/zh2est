@@ -2,11 +2,11 @@
 var _  = require('underscore');
 
 
-
 /**
  * マイルストーンのコレクションのコンストラクタ。
  * @constructor
  * @param {json object} data
+ * @see Model TODO Modelをどっかに移すなり名前帰るなり。
  */
 var MilestoneCollection = function (data) {
 
@@ -20,15 +20,24 @@ var MilestoneCollection = function (data) {
 
 	/**
 	 * マイルストーンごとに並び替えたデータ。
+	 * @type {object}
+	 * @requires #_formalize
+	 * @todo いちマイルストーンごとのコンストラクタを用意して、インスタンス群を
+	 *     .items に格納する形にしてもよいかもしれない。
 	 */
 	this.formalizedData = this._formalize(this._data);
 
 };
 
 
-(function (fn) {
+(function (fn) { // prototype shortcut
 
-
+	/**
+	 * JSON形式のオブジェクトをマイルストーンごとに並び替えたグループのオブジェ
+	 * クトにして返す。
+	 * @param {json object} data
+	 * @see .formalizedData
+	 */
 	fn._formalize = function (data) {
 
 		var milestonesGrp = _.groupBy(data, function (issue) {
@@ -53,6 +62,8 @@ var MilestoneCollection = function (data) {
 	 * マイルストーン名が一致するマイルストーンを返す。
 	 * @param {string} title マイルストーン名
 	 * @return {object}
+	 * @requires .formalizedData
+	 * @see ../run.js
 	 */
 	fn.getMilestoneByTitle = function (title) {
 
@@ -64,7 +75,6 @@ var MilestoneCollection = function (data) {
 		});
 
 	};
-
 
 })(MilestoneCollection.prototype);
 

@@ -10,7 +10,6 @@ var _  = require('underscore');
 var fs = require('fs');
 
 
-var MilestoneCollection = require('./modules/MilestoneCollection.js');
 var CommodityCollection = require('./modules/CommodityCollection.js');
 
 
@@ -19,94 +18,6 @@ var CommodityCollection = require('./modules/CommodityCollection.js');
  */
 var app = {};
 
-
-/**
- * @namespace
- */
-var utils = {};
-
-
-
-
-/**
- * 同期処理でファイルを読み込み文字列で返す。
- *
- * @memberof utils
- *
- * @requires fs
- *
- * @param  {string} file_path
- * @return {string}
- */
-utils.readFileSync = function (file_path) {
-
-	return fs.readFileSync(file_path, 'utf8');
-
-};
-
-
-/**
- * 同期処理でJSONファイルを読み込み、オブジェクトで返す。
- *
- * @memberof utils
- *
- * @requires .readFileSync
- *
- * @param  {string}      file_path
- * @return {json object}
- */
-utils.readJsonSync = function (file_path) {
-
-	var text = this.readFileSync(file_path);
-
-	/** @todo jsonのパースエラー時の処理 */
-	return JSON.parse(text);
-
-};
-
-
-
-
-
-/**
- * @constructor
- */
-var Model = function (options) {
-
-	this.options = _.extend({
-		file_path: ''
-	}, options);
-
-
-	this.initialize();
-
-};
-
-(function (fn) {
-
-	/**
-	 * @memberof Model
-	 */
-	fn.initialize = function () {
-
-		this.fetch();
-
-		this.milestones = new MilestoneCollection(this._rowData);
-
-	};
-
-
-	/**
-	 * @memberof Model
-	 */
-	fn.fetch = function () {
-
-		this._rowData = utils.readJsonSync(this.options.file_path);
-
-	};
-
-
-})(Model.prototype);
 
 
 /**
@@ -449,12 +360,9 @@ Bill.prototype = _.extend(Bill.prototype, new Doc({
 
 
 
-app.Model = Model;
 app.Estimate = Estimate;
 
 app.Table = require('./modules/TableForMakeleaps.js');
-
-app.utils = utils;
 
 
 module.exports = app;

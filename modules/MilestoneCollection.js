@@ -6,7 +6,9 @@ var _  = require('underscore');
  * マイルストーンのコレクションのコンストラクタ。
  * @constructor
  * @param {json object} data
- * @see Model TODO Modelをどっかに移すなり名前帰るなり。
+ * @see Data
+ * @see Data.milestones
+ * @see Data#fetch
  */
 var MilestoneCollection = function (data) {
 

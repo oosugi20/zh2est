@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var app = require('./formalizeIssuesJson.js');
-
 var Data = require('./modules/Data.js');
+var Estimate = require('./modules/Estimate.js');
+var Table = require('./modules/TableForMakeleaps.js');
 
 
 var file_path = process.argv[2];
@@ -10,17 +10,18 @@ var milestone_title = process.argv[3];
 var write_file_path = 'dist/' + milestone_title + '.csv';
 
 
-var my = {};
 
-
-my.data = new Data({
+var data = new Data({
 	file_path: file_path
 });
 
-my.estimate = new app.Estimate(my.data.milestones.getMilestoneByTitle(milestone_title));
-my.table = new app.Table(my.estimate); 
+var estimate = new Estimate(
+	data.milestones.getMilestoneByTitle(milestone_title)
+);
 
-my.table.writeFileSync(write_file_path);
+var table = new Table(estimate);
+
+
+table.writeFileSync(write_file_path);
+
 console.log('create!: ' + write_file_path);
-
-//console.dir(my.estimate.milestone.issues);

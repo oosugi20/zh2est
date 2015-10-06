@@ -7,6 +7,7 @@ var DocFormat = require('./DocFormat.js');
 
 /**
  * いち見積書のコンストラクタ。
+ * いちマイルストーンのデータを渡してインスタンスを生成して使う。
  * @constructor
  * @param {object} milestone
  */
@@ -22,8 +23,8 @@ var Estimate = function (milestone) {
 	/**
 	 * 各種属性値を保持する。
 	 * @type {object}
-	 * @todo prototypeの作り方悪いかも。こうしないとattributesがprototypeに入っ
-	 * たまま
+	 * @todo prototypeの作り方悪いかも。
+	 *     こうしないとattributesがprototypeに入ったまま。
 	 */
 	this.attributes = this.attributes;
 

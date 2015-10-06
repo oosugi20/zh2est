@@ -1,16 +1,16 @@
 {
   "name": "zh2est",
   "version": "0.0.0",
-  "description": "",
+  "description": "ZenHubで設定したestimateから見積書を作る。",
   "scripts": {
-    "start": "mocha --watch --growl",
+    "start:dev": "mocha --watch --growl",
     "test": "mocha"
   },
   "bin": {
     "zh2est": "run.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "oosugi20@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "underscore": "^1.8.3"
   },

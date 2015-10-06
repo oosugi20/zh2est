@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "bin": {
-    "myapp": "run.js"
+    "zh2est": "run.js"
   },
   "author": "",
   "license": "ISC",

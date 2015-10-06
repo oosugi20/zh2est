@@ -10,6 +10,7 @@ ZenHubで設定したestimateを使って見積書を作る機能。
 ZenHubのestimateの値を使ってるので、ZenHubのJSONファイルをローカルに保存しておく。
 
 ZenHubのBoardsにアクセスした場合にZenHubが取ってきている、 https://api.zenhub.io/v3/repos/{repoId}/issues が必要。
+Chromeのデベロッパーツールとかから参照して保存しとく。
 
 
 
